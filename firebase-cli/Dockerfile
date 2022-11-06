@@ -8,7 +8,7 @@ FROM node:16
 # SHELL ["/bin/ash","-ouex","pipefail","-c"]
 
 # WORKDIR: 作業ディレクトリを指定
-WORKDIR /workdir
+WORKDIR /firebase/workdir
 
 # Firebase toolsのインストール
 # RUN npm install firebase-functions@latest firebase-admin@latest --save

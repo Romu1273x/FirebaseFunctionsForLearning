@@ -12,7 +12,7 @@ services:
     container_name: firecli-container
     # volumes: コンテナ内で作成したデータを永続化するための場所
     volumes:
-      - ./FirebaseFunctionsForLearning:/workdir
+      - ./firebase:/workdir
     # ports: 公開用のポート。ホスト側とコンテナ側の両方のポートを指定（ ホスト側:コンテナ側 ）
     ports:
       - 4000:4000
