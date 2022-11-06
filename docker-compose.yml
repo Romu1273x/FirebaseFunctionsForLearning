@@ -1,0 +1,21 @@
+version: "3"
+services:
+  # コンテナ名
+  firebase-cli-container:
+    # build: Dockerfileがあるフォルダを示す
+    build:
+      # context: DockerfileのあるPath
+      context: ./firebase-cli
+      # dockerfile: Dockerfile名
+      dockerfile: Dockerfile
+    # container_name: コンテナ名を明示する
+    container_name: firecli-container
+    # volumes: コンテナ内で作成したデータを永続化するための場所
+    volumes:
+      - ./FirebaseFunctionsForLearning:/workdir
+    # ports: 公開用のポート。ホスト側とコンテナ側の両方のポートを指定（ ホスト側:コンテナ側 ）
+    ports:
+      - 4000:4000
+      - 5001:5001
+      - 8080:8080
+      - 9005:9005
