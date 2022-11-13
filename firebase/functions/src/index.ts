@@ -84,34 +84,60 @@ export const createBook =
 functions.https.onRequest(async (request, response) => {
   const userId = "user01";
   const bookshelfId = "bookshelf01";
-  const bookDate = {
-    "title": "title",
-    "isbn": "isbn",
-    "titleKana": "titleKana",
-    "subTitle": "subTitle",
-    "subTitleKana": "subTitleKana",
-    "seriesName": "seriesName",
-    "seriesNameKana": "seriesNameKana",
-    "contents": "contents",
-    "contentsKana": "contentsKana",
-    "author": "author",
-    "authorKana": "authorKana",
-    "publisherName": "publisherName",
-    "size": "size",
-    "itemCaption": "itemCaption",
-    "salesDate": "salesDate",
-    "itemPrice": "itemPrice",
-    "itemUrl": "itemUrl",
-    "affiliateUrl": "affiliateUrl",
-    "smallImageUrl": "smallImageUrl",
-    "mediumImageUrl": "mediumImageUrl",
-    "largeImageUrl": "largeImageUrl",
-    "registeredDateTime": "registeredDateTime", // DateTime
-  };
+  // const bookDate = {
+  //   "title": "title",
+  //   "isbn": "isbn",
+  //   "titleKana": "titleKana",
+  //   "subTitle": "subTitle",
+  //   "subTitleKana": "subTitleKana",
+  //   "seriesName": "seriesName",
+  //   "seriesNameKana": "seriesNameKana",
+  //   "contents": "contents",
+  //   "contentsKana": "contentsKana",
+  //   "author": "author",
+  //   "authorKana": "authorKana",
+  //   "publisherName": "publisherName",
+  //   "size": "size",
+  //   "itemCaption": "itemCaption",
+  //   "salesDate": "salesDate",
+  //   "itemPrice": "itemPrice",
+  //   "itemUrl": "itemUrl",
+  //   "affiliateUrl": "affiliateUrl",
+  //   "smallImageUrl": "smallImageUrl",
+  //   "mediumImageUrl": "mediumImageUrl",
+  //   "largeImageUrl": "largeImageUrl",
+  //   "registeredDateTime": "registeredDateTime", // DateTime
+  // };
   const userRef = db.collection("users");
   try {
-    await userRef.doc(userId).collection("bookshelfs").doc(
-        bookshelfId).set(bookDate);
+    for (let i=0; i<10; i++) {
+      const bookDate = {
+        "title": "title" + i,
+        "isbn": "isbn" + i,
+        "titleKana": "titleKana" + i,
+        "subTitle": "subTitle" + i,
+        "subTitleKana": "subTitleKana" + i,
+        "seriesName": "seriesName" + i,
+        "seriesNameKana": "seriesNameKana" + i,
+        "contents": "contents" + i,
+        "contentsKana": "contentsKana" + i,
+        "author": "author" + i,
+        "authorKana": "authorKana" + i,
+        "publisherName": "publisherName" + i,
+        "size": "size" + i,
+        "itemCaption": "itemCaption" + i,
+        "salesDate": "salesDate" + i,
+        "itemPrice": "itemPrice" + i,
+        "itemUrl": "itemUrl" + i,
+        "affiliateUrl": "affiliateUrl" + i,
+        "smallImageUrl": "smallImageUrl" + i,
+        "mediumImageUrl": "mediumImageUrl" + i,
+        "largeImageUrl": "largeImageUrl" + i,
+        "registeredDateTime": "registeredDateTime" + i, // DateTime
+      };
+      await userRef.doc(userId).collection("bookshelfs").doc(
+          bookshelfId).collection("books").doc(bookDate.isbn).set(bookDate);
+    }
 
     response.send("Complete");
   } catch (e) {
